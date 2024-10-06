@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 const splashView = '/';
+const onboardingView = '/onboarding';
 const loginView = '/login';
 const signupView = '/signup';
 const homeView = '/home';

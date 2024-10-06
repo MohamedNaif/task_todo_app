@@ -23,7 +23,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
       const Duration(seconds: 4),
       () {
         if (mounted) {
-          Navigator.pushReplacementNamed(context, loginView);
+          Navigator.pushReplacementNamed(context, onboardingView);
         }
       },
     );
