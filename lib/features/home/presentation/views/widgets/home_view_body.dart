@@ -62,7 +62,8 @@ class HomeViewBodyState extends State<HomeViewBody> {
                 GestureDetector(
                     onTap: () {
                       Navigator.pushNamed(context, profileView);
-                    }, child: Image.asset(AssetsDate.profileImage)),
+                    },
+                    child: Image.asset(AssetsDate.profileImage)),
                 const SizedBox(width: 10),
                 IconButton(
                   onPressed: () {},
@@ -101,6 +102,13 @@ class HomeViewBodyState extends State<HomeViewBody> {
                       selectedFilter == 'All' ||
                       task['status'] == selectedFilter)
                   .map((task) => CustomHomeCard(
+                        onTap: () {
+                          Navigator.pushNamed(
+                            context,
+                            taskDetailsView,
+                            arguments: task,
+                          );
+                        },
                         title: task['title']!,
                         description: task['description']!,
                         status: task['status']!,
