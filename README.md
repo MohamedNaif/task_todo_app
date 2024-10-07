@@ -1,7 +1,7 @@
 # tasky_todo_app
 
 
-## Table of Contents
+## 📜 Table of Contents
 - [Overview](#overview)
 - [Features](#features)
 - [Technologies Used](#technologies-used)
@@ -12,10 +12,10 @@
 - [Contributing](#contributing)
 - [License](#license)
 
-## Overview
+## 🌟 Overview
 This is a Flutter-based ToDo app that allows users to manage their tasks efficiently. The application provides a seamless user experience with functionalities such as authentication, task management, and QR code integration.
 
-## Features
+## 🚀 Features
 - **User Authentication**: Register and log in using phone number and password.
 - **Task Management**: Create, view, update, and delete tasks.
 - **Infinite Scroll**: Load tasks as the user scrolls down.
@@ -52,23 +52,23 @@ Here are screenshots of the ToDo app's screens:
 1. Splash View 
 <img src="https://github.com/user-attachments/assets/0edb8825-db1a-4178-acbc-9638efac17c4" alt="Splash View" width="300"/>
 
-<!-- Replace with your login screen screenshot link -->
+
 
 2. Onboarding View
 <img src="https://github.com/user-attachments/assets/63f43121-e8e7-41f2-bf3e-647da2dfa4cf" alt="Onboarding View" width="300"/>
 
-<!-- Replace with your registration screen screenshot link -->
 
-3. Login & Register View![Screenshot_1728257200](https://github.com/user-attachments/assets/69053179-35fe-469c-8643-0dd03c7897f8)
+
+3. Login & Register View
 <img src="https://github.com/user-attachments/assets/69053179-35fe-469c-8643-0dd03c7897f8" alt="Login View" width="300"/>
 <img src="https://github.com/user-attachments/assets/8fe7f32e-d598-44c8-8a4c-8ff48e1c1356" alt="Register View" width="300"/>
 <img src="https://github.com/user-attachments/assets/edcbd65a-5fde-4678-98c8-e2cfff256388" alt="Additional Login" width="300"/>
 <img src="https://github.com/user-attachments/assets/13fe4498-2dfb-4c8f-b852-5fc19a0a96ae" alt="Additional Register" width="300"/>
 
-<!-- Replace with your todo list screen screenshot link -->
+
 
 4. Home View
-<!-- Replace with your task details screen screenshot link -->![Screenshot_1728308555](https://github.com/user-attachments/assets/66250eb0-94d2-4d71-b54b-c1057307c521)
+
 <img src="https://github.com/user-attachments/assets/66250eb0-94d2-4d71-b54b-c1057307c521" alt="Home View 1" width="300"/>
 <img src="https://github.com/user-attachments/assets/b1106f03-382d-40d7-bab1-78e4230c5841" alt="Home View 2" width="300"/>
 <img src="https://github.com/user-attachments/assets/7181a110-69a2-466d-b915-fb8c85ce41ca" alt="Home View 3" width="300"/>
