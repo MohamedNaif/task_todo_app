@@ -50,30 +50,33 @@ To get started with the ToDo app, follow these steps:
 Here are screenshots of the ToDo app's screens:
 
 1. Splash View 
-![Screenshot_1728255344](https://github.com/user-attachments/assets/0edb8825-db1a-4178-acbc-9638efac17c4)
+<img src="https://github.com/user-attachments/assets/0edb8825-db1a-4178-acbc-9638efac17c4" alt="Splash View" width="300"/>
 
 <!-- Replace with your login screen screenshot link -->
 
-2. Onboarding View![Screenshot_1728255348](https://github.com/user-attachments/assets/63f43121-e8e7-41f2-bf3e-647da2dfa4cf)
+2. Onboarding View
+<img src="https://github.com/user-attachments/assets/63f43121-e8e7-41f2-bf3e-647da2dfa4cf" alt="Onboarding View" width="300"/>
 
 <!-- Replace with your registration screen screenshot link -->
 
 3. Login & Register View![Screenshot_1728257200](https://github.com/user-attachments/assets/69053179-35fe-469c-8643-0dd03c7897f8)
-![Screenshot_1728257195](https://github.com/user-attachments/assets/8fe7f32e-d598-44c8-8a4c-8ff48e1c1356)
-![Screenshot_1728257111](https://github.com/user-attachments/assets/edcbd65a-5fde-4678-98c8-e2cfff256388)
-![Screenshot_1728257204](https://github.com/user-attachments/assets/13fe4498-2dfb-4c8f-b852-5fc19a0a96ae)
+<img src="https://github.com/user-attachments/assets/69053179-35fe-469c-8643-0dd03c7897f8" alt="Login View" width="300"/>
+<img src="https://github.com/user-attachments/assets/8fe7f32e-d598-44c8-8a4c-8ff48e1c1356" alt="Register View" width="300"/>
+<img src="https://github.com/user-attachments/assets/edcbd65a-5fde-4678-98c8-e2cfff256388" alt="Additional Login" width="300"/>
+<img src="https://github.com/user-attachments/assets/13fe4498-2dfb-4c8f-b852-5fc19a0a96ae" alt="Additional Register" width="300"/>
 
 <!-- Replace with your todo list screen screenshot link -->
 
 4. Home View
 <!-- Replace with your task details screen screenshot link -->![Screenshot_1728308555](https://github.com/user-attachments/assets/66250eb0-94d2-4d71-b54b-c1057307c521)
-![Screenshot_1728308552](https://github.com/user-attachments/assets/b1106f03-382d-40d7-bab1-78e4230c5841)
-![Screenshot_1728308549](https://github.com/user-attachments/assets/7181a110-69a2-466d-b915-fb8c85ce41ca)
-![Screenshot_1728311443](https://github.com/user-attachments/assets/f706b77c-3076-4afd-b9c8-c7827e23b521)
-![Screenshot_1728308545](https://github.com/user-attachments/assets/fbc7957a-083a-4d96-8ef2-5097b20278ef)
+<img src="https://github.com/user-attachments/assets/66250eb0-94d2-4d71-b54b-c1057307c521" alt="Home View 1" width="300"/>
+<img src="https://github.com/user-attachments/assets/b1106f03-382d-40d7-bab1-78e4230c5841" alt="Home View 2" width="300"/>
+<img src="https://github.com/user-attachments/assets/7181a110-69a2-466d-b915-fb8c85ce41ca" alt="Home View 3" width="300"/>
+<img src="https://github.com/user-attachments/assets/f706b77c-3076-4afd-b9c8-c7827e23b521" alt="Home View 4" width="300"/>
+<img src="https://github.com/user-attachments/assets/fbc7957a-083a-4d96-8ef2-5097b20278ef" alt="Home View 5" width="300"/>
 
 5. Profile View
-![Screenshot_1728262580](https://github.com/user-attachments/assets/dff606de-0cd0-4400-a040-70db2f13949f)
+<img src="https://github.com/user-attachments/assets/dff606de-0cd0-4400-a040-70db2f13949f" alt="Profile View" width="300"/>
 
 5. QR Code Screen
 <!-- Replace with your QR code screen screenshot link -->
