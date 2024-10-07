@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tasky_todo_app/core/helper/constant.dart';
 import 'package:tasky_todo_app/features/auth/presentation/views/login_view.dart';
 import 'package:tasky_todo_app/features/auth/presentation/views/signup_view.dart';
+import 'package:tasky_todo_app/features/home/presentation/views/home_view.dart';
 import 'package:tasky_todo_app/features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:tasky_todo_app/features/profile/presentation/views/profile_view.dart';
 import 'package:tasky_todo_app/features/splash/presentation/ui/views/spalsh_view.dart';
@@ -23,7 +24,7 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const ProfileView());
 
       case homeView:
-        return MaterialPageRoute(builder: (_) => const Scaffold());
+        return MaterialPageRoute(builder: (_) => const HomeView());
     }
     return null;
   }
