@@ -84,7 +84,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
             const SizedBox(height: 30),
             CustomButton(
               onTap: () {
-                Navigator.pushNamed(context, profileView);
+                Navigator.pushNamed(context, homeView);
               },
               text: 'Sign In',
             ),
