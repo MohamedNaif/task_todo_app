@@ -5,6 +5,8 @@ class AssetsDate {
   static const String arrowLeft = 'assets/images/Arrow - Left.png';
   static const String arrowDown = 'assets/images/Arrow - Down 2.png';
 
+  static const String addImage = 'assets/images/Frame (2).png';
+
   static const String countryImage = 'assets/images/Frame 102.png';
   static const String copyIcon = 'assets/images/Frame (3).png';
 

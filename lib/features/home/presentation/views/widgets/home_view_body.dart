@@ -131,6 +131,7 @@ class HomeViewBodyState extends State<HomeViewBody> {
           heroTag: "btn2",
           backgroundColor: primaryColor,
           onPressed: () {
+            Navigator.pushNamed(context, addTaskView);
             // Action for the first button
           },
           child: const Icon(
