@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:tasky_todo_app/core/theming/app_style.dart';
 import 'package:tasky_todo_app/features/home/presentation/views/widgets/priority_and_date_row.dart';

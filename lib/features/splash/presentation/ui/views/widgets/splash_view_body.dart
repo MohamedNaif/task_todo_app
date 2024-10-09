@@ -10,10 +10,8 @@ class SplashViewBody extends StatefulWidget {
 }
 
 class _SplashViewBodyState extends State<SplashViewBody> {
-
-
-   @override
-     void initState() {
+  @override
+  void initState() {
     super.initState();
     navigateToHome();
   }
@@ -28,8 +26,6 @@ class _SplashViewBodyState extends State<SplashViewBody> {
       },
     );
   }
-
-
 
   @override
   Widget build(BuildContext context) {

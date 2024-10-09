@@ -54,7 +54,7 @@ class CustomHomeCard extends StatelessWidget {
             statusColor: statusColor,
           ),
           const Spacer(),
-         const CustomPopMenuButton()
+          const CustomPopMenuButton()
         ]),
       ),
     );

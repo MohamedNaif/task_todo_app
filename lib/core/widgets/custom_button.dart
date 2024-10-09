@@ -1,6 +1,3 @@
-
-
-
 import 'package:flutter/material.dart';
 import 'package:tasky_todo_app/core/helper/constant.dart';
 import 'package:tasky_todo_app/core/theming/app_style.dart';
@@ -8,7 +5,7 @@ import 'package:tasky_todo_app/core/theming/app_style.dart';
 class CustomButton extends StatelessWidget {
   const CustomButton({super.key, required this.text, required this.onTap});
 
-  final String text ;
+  final String text;
   final VoidCallback onTap;
 
   @override
@@ -21,11 +18,11 @@ class CustomButton extends StatelessWidget {
         width: MediaQuery.sizeOf(context).width * 0.8,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12), color: primaryColor),
-        child:  Center(
+        child: Center(
           child: Text(
-                text,
-                style: AppStyle.textStyle19(),
-              ),
+            text,
+            style: AppStyle.textStyle19(),
+          ),
         ),
       ),
     );

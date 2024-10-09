@@ -1,6 +1,3 @@
-
-
-
 import 'package:flutter/material.dart';
 import 'package:tasky_todo_app/core/theming/app_style.dart';
 
@@ -19,9 +16,7 @@ class CustomPopMenuButton extends StatelessWidget {
           child: Text(
             'Edit',
             style: AppStyle.textStyle14().copyWith(
-                color: Colors.black,
-                fontSize: 16,
-                fontWeight: FontWeight.w600),
+                color: Colors.black, fontSize: 16, fontWeight: FontWeight.w600),
           ),
         ),
         PopupMenuItem(

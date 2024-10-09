@@ -1,6 +1,3 @@
-
-
-
 import 'package:flutter/material.dart';
 import 'package:tasky_todo_app/core/theming/app_style.dart';
 
