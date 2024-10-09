@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tasky_todo_app/core/function/show_snack_bar.dart';
 import 'package:tasky_todo_app/core/helper/assets.dart';
 import 'package:tasky_todo_app/core/helper/constant.dart';
 import 'package:tasky_todo_app/core/theming/app_style.dart';
 
 import 'package:tasky_todo_app/core/widgets/custom_button.dart';
+import 'package:tasky_todo_app/features/auth/data/models/register_model.dart';
+import 'package:tasky_todo_app/features/auth/presentation/view_model/auth_cubit/auth_cubit_cubit.dart';
 import 'package:tasky_todo_app/features/auth/presentation/views/widgets/account_check.dart';
 import 'package:tasky_todo_app/core/widgets/custom_text_form_field.dart';
 
@@ -18,6 +22,9 @@ class _SignupViewBodyState extends State<SignupViewBody> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool _obscureText = true;
   String? selectedExperienceLevel;
+  AutovalidateMode? autoValidateMode = AutovalidateMode.disabled;
+  String? name, phone, password, address, experienceLevel;
+  num? experienceYears;
 
   List<String> experienceLevels = ['Junior', 'Senior', 'Team Leader'];
   void _toggleVisibility() {
@@ -56,14 +63,20 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                   child: Text('Sign Up', style: AppStyle.textStyle24())),
             ),
             const SizedBox(height: 20),
-            const CustomTextFormField(
+            CustomTextFormField(
               obscureText: false,
               hintText: 'Name...',
+              onSaved: (value) {
+                name = value;
+              },
             ),
             const SizedBox(height: 20),
             CustomTextFormField(
               obscureText: false,
               hintText: '123 456-7890',
+              onSaved: (value) {
+                phone = value;
+              },
               prefixIcon: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: Row(
@@ -77,21 +90,30 @@ class _SignupViewBodyState extends State<SignupViewBody> {
               ),
             ),
             const SizedBox(height: 20),
-            const CustomTextFormField(
+            CustomTextFormField(
               obscureText: false,
               hintText: 'Years of experience...',
+              onSaved: (value) {
+                experienceYears = num.parse(value!);
+              },
             ),
             const SizedBox(height: 20),
-            crateDropdownButton(context),
+            crateDropdownButton(context, experienceLevels),
             const SizedBox(height: 20),
-            const CustomTextFormField(
+            CustomTextFormField(
               obscureText: false,
               hintText: 'Address...',
+              onSaved: (value) {
+                address = value;
+              },
             ),
             const SizedBox(height: 20),
             CustomTextFormField(
               obscureText: _obscureText,
               hintText: 'Password',
+              onSaved: (value) {
+                password = value;
+              },
               maxLines: 1,
               suffixIcon: IconButton(
                 onPressed: _toggleVisibility,
@@ -101,11 +123,49 @@ class _SignupViewBodyState extends State<SignupViewBody> {
               ),
             ),
             const SizedBox(height: 20),
-            CustomButton(
-              onTap: () {
-                Navigator.pushNamed(context, loginView);
+            BlocConsumer<AuthCubitCubit, AuthCubitState>(
+              listener: (context, state) {
+                if (state is RegisterError) {
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text(state.errMessage),
+                    backgroundColor: Colors.red,
+                  ));
+                }
+               else if (state is RegisterSuccess) {
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    content: Text('Account created successfully'),
+                    backgroundColor: Colors.green,
+                  ));
+                  Navigator.pop(context);
+                }
+                // TODO: implement listener
               },
-              text: 'Sign Up',
+              builder: (context, state) {
+                return CustomButton(
+                  onTap: ()async {
+                    if (_formKey.currentState!.validate()) {
+                      _formKey.currentState!.save();
+                      var model = Register(
+                        phone: phone!,
+                        password: password!,
+                        displayName: name!,
+                        experienceYears: experienceYears as int,
+                        address: address!,
+                        level: experienceLevel!.toLowerCase(),
+                      );
+                      await BlocProvider.of<AuthCubitCubit>(context)
+                          .register(model);
+                    } else {
+                      showSnackBar(context,
+                          message: 'Please enter the required fields',
+                          color: Colors.red);
+                      autoValidateMode = AutovalidateMode.always;
+                      setState(() {});
+                    }
+                  },
+                  text:state is RegisterLoading ? 'Loading....' : 'Sign Up',
+                );
+              },
             ),
             const SizedBox(height: 10),
             AccountCheck(
@@ -122,7 +182,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
     );
   }
 
-  SizedBox crateDropdownButton(BuildContext context) {
+  SizedBox crateDropdownButton(BuildContext context, List<String> experienceLevels) {
     return SizedBox(
       height: MediaQuery.sizeOf(context).height * 0.07,
       width: MediaQuery.sizeOf(context).width * 0.8,
@@ -143,6 +203,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
         onChanged: (String? newValue) {
           setState(() {
             selectedExperienceLevel = newValue;
+            experienceLevel = newValue;
           });
         },
       ),

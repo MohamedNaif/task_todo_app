@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tasky_todo_app/core/function/show_snack_bar.dart';
 import 'package:tasky_todo_app/core/helper/assets.dart';
 import 'package:tasky_todo_app/core/helper/constant.dart';
 import 'package:tasky_todo_app/core/theming/app_style.dart';
 
 import 'package:tasky_todo_app/core/widgets/custom_button.dart';
+import 'package:tasky_todo_app/features/auth/data/models/register_model.dart';
+import 'package:tasky_todo_app/features/auth/presentation/view_model/auth_cubit/auth_cubit_cubit.dart';
 import 'package:tasky_todo_app/features/auth/presentation/views/widgets/account_check.dart';
 import 'package:tasky_todo_app/core/widgets/custom_text_form_field.dart';
 
@@ -17,6 +21,8 @@ class LoginViewBody extends StatefulWidget {
 class _LoginViewBodyState extends State<LoginViewBody> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool _obscureText = true;
+  String? phone, password;
+  AutovalidateMode? autoValidateMode = AutovalidateMode.disabled;
 
   // Toggle password visibility
   void _toggleVisibility() {
@@ -69,6 +75,9 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                   ],
                 ),
               ),
+              onSaved: (value) {
+                phone = value;
+              },
             ),
             const SizedBox(height: 30),
             CustomTextFormField(
@@ -81,13 +90,45 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                   _obscureText ? Icons.visibility : Icons.visibility_off,
                 ),
               ),
+              onSaved: (value) {
+                password = value;
+              },
             ),
             const SizedBox(height: 30),
-            CustomButton(
-              onTap: () {
-                Navigator.pushNamed(context, homeView);
+            BlocConsumer<AuthCubitCubit, AuthCubitState>(
+              listener: (context, state) {
+                if (state is LoginSuccess) {
+                  showSnackBar(context,
+                      message: 'Login Success, Welcome', color: Colors.green);
+                  Navigator.pushNamed(context, homeView);
+                } else if (state is LoginError) {
+                  showSnackBar(context,
+                      message: state.errMessage, color: Colors.red);
+                }
+                
               },
-              text: 'Sign In',
+              builder: (context, state) {
+                return CustomButton(
+                  onTap: () async {
+                    if (_formKey.currentState!.validate()) {
+                      _formKey.currentState!.save();
+                      var model = Register(
+                        phone: phone!,
+                        password: password!,
+                      );
+                      await BlocProvider.of<AuthCubitCubit>(context)
+                          .login(model);
+                    } else {
+                      showSnackBar(context,
+                          message: 'Please enter the required fields',
+                          color: Colors.red);
+                      autoValidateMode = AutovalidateMode.always;
+                      setState(() {});
+                    }
+                  },
+                  text:state is LoginLoading ? 'Loading...' : 'Sign In',
+                );
+              },
             ),
             const SizedBox(height: 10),
             AccountCheck(

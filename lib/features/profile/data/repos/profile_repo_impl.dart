@@ -13,8 +13,7 @@ class ProfileRepoImpl implements ProfileRepo {
 
   ProfileRepoImpl(this._apiServices);
   @override
-  Future<Either<Failures, UserData>> getProfileData()async {
-   
+  Future<Either<Failures, UserData>> getProfileData() async {
     try {
       Response response = await _apiServices.request(
         method: 'GET',

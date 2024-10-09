@@ -80,9 +80,9 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
               SizedBox(
                 height: MediaQuery.sizeOf(context).height * 0.03,
               ),
-              const CustomCard(
+               CustomCard(
                 lableText: 'LOCATION',
-                valueText: 'Fayyum, Egypt',
+                valueText: state.userData.address ?? 'Egypt,cairo',
               ),
             ],
           );
@@ -92,8 +92,8 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
       },
     );
   }
-  
-  void _triggerProfileCubit() async{
+
+  void _triggerProfileCubit() async {
     await BlocProvider.of<ProfileCubitCubit>(context).getProfileData();
   }
 }

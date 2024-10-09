@@ -8,7 +8,7 @@ class CustomTextFormField extends StatelessWidget {
       this.hintText,
       this.prefixIcon,
       this.suffixIcon,
-      this.maxLines});
+      this.maxLines, this.onSaved});
 
   final bool obscureText;
   final String? labelText;
@@ -16,12 +16,14 @@ class CustomTextFormField extends StatelessWidget {
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final int? maxLines;
+  final Function(String?)? onSaved;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: MediaQuery.sizeOf(context).width * 0.8,
       child: TextFormField(
+        onSaved:onSaved ,
         maxLines: maxLines,
         obscureText: obscureText,
         decoration: InputDecoration(
