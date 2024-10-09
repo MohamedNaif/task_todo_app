@@ -1,6 +1,3 @@
-
-
-
 import 'package:flutter/material.dart';
 
 class CustomTextFormField extends StatelessWidget {
@@ -10,20 +7,22 @@ class CustomTextFormField extends StatelessWidget {
       this.labelText,
       this.hintText,
       this.prefixIcon,
-      this.suffixIcon});
+      this.suffixIcon,
+      this.maxLines});
 
   final bool obscureText;
   final String? labelText;
   final String? hintText;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
+  final int? maxLines;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.sizeOf(context).height * 0.07,
       width: MediaQuery.sizeOf(context).width * 0.8,
       child: TextFormField(
+        maxLines: maxLines,
         obscureText: obscureText,
         decoration: InputDecoration(
           labelText: labelText,

@@ -5,7 +5,7 @@ import 'package:tasky_todo_app/core/theming/app_style.dart';
 
 import 'package:tasky_todo_app/core/widgets/custom_button.dart';
 import 'package:tasky_todo_app/features/auth/presentation/views/widgets/account_check.dart';
-import 'package:tasky_todo_app/features/auth/presentation/views/widgets/custom_text_form_field.dart';
+import 'package:tasky_todo_app/core/widgets/custom_text_form_field.dart';
 
 class SignupViewBody extends StatefulWidget {
   const SignupViewBody({super.key});
@@ -92,6 +92,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
             CustomTextFormField(
               obscureText: _obscureText,
               hintText: 'Password',
+              maxLines: 1,
               suffixIcon: IconButton(
                 onPressed: _toggleVisibility,
                 icon: Icon(

@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:tasky_todo_app/core/helper/constant.dart';
 import 'package:tasky_todo_app/features/auth/presentation/views/login_view.dart';
 import 'package:tasky_todo_app/features/auth/presentation/views/signup_view.dart';
+import 'package:tasky_todo_app/features/home/presentation/views/add_task_view.dart';
 import 'package:tasky_todo_app/features/home/presentation/views/home_view.dart';
+import 'package:tasky_todo_app/features/home/presentation/views/task_detailes_view.dart';
 import 'package:tasky_todo_app/features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:tasky_todo_app/features/profile/presentation/views/profile_view.dart';
 import 'package:tasky_todo_app/features/splash/presentation/ui/views/spalsh_view.dart';
@@ -25,6 +27,12 @@ class AppRouter {
 
       case homeView:
         return MaterialPageRoute(builder: (_) => const HomeView());
+
+      case taskDetailsView:
+        return MaterialPageRoute(builder: (_) => const TaskDetailesView());
+
+      case addTaskView:
+        return MaterialPageRoute(builder: (_) => const AddTaskView());
     }
     return null;
   }
