@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:tasky_todo_app/core/di/dependency_injection.dart';
+import 'package:tasky_todo_app/core/function/show_snack_bar.dart';
 import 'package:tasky_todo_app/core/helper/assets.dart';
 import 'package:tasky_todo_app/core/helper/constant.dart';
 import 'package:tasky_todo_app/core/helper/shared_pref.dart';
 import 'package:tasky_todo_app/core/theming/app_style.dart';
 import 'package:tasky_todo_app/core/widgets/custom_app_bar.dart';
+import 'package:tasky_todo_app/features/auth/data/repos/auth_repo_impl.dart';
 import 'package:tasky_todo_app/features/auth/presentation/view_model/auth_cubit/auth_cubit_cubit.dart';
 import 'package:tasky_todo_app/features/home/data/models/task_model/task_model.dart';
 import 'package:tasky_todo_app/features/home/presentation/view_model/home_cubit/home_cubit.dart';
@@ -43,34 +46,60 @@ class HomeViewBodyState extends State<HomeViewBody> {
           return Stack(children: [
             Column(
               children: [
-                CustomAppBar(
-                  title: Text(
-                    "Logo",
-                    style: AppStyle.textStyle24(),
-                  ),
-                  actions: [
-                    Row(children: [
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.pushNamed(context, profileView);
-                        },
-                        child: Image.asset(AssetsDate.profileImage),
-                      ),
-                      const SizedBox(width: 10),
-                      IconButton(
-                        onPressed: () async {
-                          await BlocProvider.of<AuthCubitCubit>(context)
-                              .logout();
-                          // Logout function
-                        },
-                        icon: const Icon(
-                          Icons.logout,
-                          color: primaryColor,
+                BlocProvider(
+                  create: (context) =>
+                      AuthCubitCubit(getIt.get<AuthRepoImpl>()),
+                  child: CustomAppBar(
+                    title: Text(
+                      "Logo",
+                      style: AppStyle.textStyle24(),
+                    ),
+                    actions: [
+                      Row(children: [
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pushNamed(context, profileView);
+                          },
+                          child: Image.asset(AssetsDate.profileImage),
                         ),
-                      ),
-                      const SizedBox(width: 10),
-                    ])
-                  ],
+                        const SizedBox(width: 10),
+                        BlocConsumer<AuthCubitCubit, AuthCubitState>(
+                          listener: (context, state) {
+                            if (state is LogoutSuccess) {
+                              showSnackBar(context,
+                                  message: 'Logout Success',
+                                  color: Colors.green);
+                              Navigator.pushNamedAndRemoveUntil(
+                                context,
+                                loginView,
+                                (route) => false,
+                              );
+                            } else if (state is LogoutError) {
+                              showSnackBar(context, message: state.errMessage);
+                            }
+                          },
+                          builder: (context, state) {
+                            return IconButton(
+                              onPressed: () async {
+                                await BlocProvider.of<AuthCubitCubit>(context)
+                                    .logout();
+                                // Logout function
+                              },
+                              icon: state is LogoutLoading
+                                  ? const Center(
+                                      child: CircularProgressIndicator(),
+                                    )
+                                  : const Icon(
+                                      Icons.logout,
+                                      color: primaryColor,
+                                    ),
+                            );
+                          },
+                        ),
+                        const SizedBox(width: 10),
+                      ])
+                    ],
+                  ),
                 ),
                 const SizedBox(height: 20),
 
@@ -218,11 +247,11 @@ class HomeViewBodyState extends State<HomeViewBody> {
   // Function to get color based on task status
   Color getContainerColor(String status) {
     switch (status) {
-      case 'Waiting':
+      case 'waiting':
         return const Color.fromRGBO(255, 228, 242, 1);
-      case 'Inprogress':
+      case 'in progress':
         return const Color.fromRGBO(240, 236, 255, 1);
-      case 'Finished':
+      case 'finished':
         return const Color.fromRGBO(227, 242, 255, 1);
       default:
         return Colors.grey[200]!;
@@ -234,7 +263,7 @@ class HomeViewBodyState extends State<HomeViewBody> {
     switch (status) {
       case 'waiting':
         return const Color.fromRGBO(255, 125, 83, 1);
-      case 'in progress':
+      case 'inprogress' || 'in progress':
         return primaryColor;
       case 'finished':
         return const Color.fromRGBO(0, 135, 255, 1);

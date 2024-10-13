@@ -19,4 +19,5 @@ class CustomAppBar extends StatelessWidget {
       title: title,
     );
   }
+   Size get preferredSize => const Size.fromHeight(56.0); // Set a fixed height
 }
