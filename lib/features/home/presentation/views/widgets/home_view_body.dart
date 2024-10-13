@@ -28,12 +28,22 @@ class HomeViewBody extends StatefulWidget {
 
 class HomeViewBodyState extends State<HomeViewBody> {
   String selectedFilter = 'All'; // Default filter
+  late final ScrollController _scrollController;
+  bool isLoading = false;
 
   @override
   void initState() {
     super.initState();
     _setSelectedIndexValue();
     _triggerHomeCubit();
+    _scrollController = ScrollController();
+    _scrollController.addListener(_scrollListener);
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
   }
 
   @override
@@ -143,7 +153,10 @@ class HomeViewBodyState extends State<HomeViewBody> {
                           ),
                         )
                       : ListView.builder(
-                          itemCount: state.tasks.length,
+                          itemCount:
+                              context.read<HomeCubit>().hasMoreTasks != false
+                                  ? state.tasks.length + 1
+                                  : state.tasks.length,
                           itemBuilder: (context, index) {
                             final task = state.tasks[index];
                             if (selectedFilter == 'All' ||
@@ -309,5 +322,19 @@ class HomeViewBodyState extends State<HomeViewBody> {
   Future<void> _triggerHomeCubit() async {
     await BlocProvider.of<HomeCubit>(context)
         .getAllTasks(status: widget.status);
+  }
+
+  void _scrollListener() async {
+    final currentPosition = _scrollController.position.pixels;
+    final maxScrollLength = _scrollController.position.maxScrollExtent;
+    final isNearEnd = currentPosition >= .75 * maxScrollLength;
+    final homeCubit = BlocProvider.of<HomeCubit>(context);
+
+    if (isNearEnd && !isLoading && homeCubit.hasMoreTasks != false) {
+      isLoading = true;
+      await BlocProvider.of<HomeCubit>(context)
+          .getAllTasks(status: widget.status);
+      isLoading = false;
+    }
   }
 }
