@@ -80,7 +80,7 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
               SizedBox(
                 height: MediaQuery.sizeOf(context).height * 0.03,
               ),
-               CustomCard(
+              CustomCard(
                 lableText: 'LOCATION',
                 valueText: state.userData.address ?? 'Egypt,cairo',
               ),

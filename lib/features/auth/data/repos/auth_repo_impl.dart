@@ -10,12 +10,12 @@ import 'package:tasky_todo_app/features/auth/data/models/auth_info.dart';
 import 'package:tasky_todo_app/features/auth/data/models/register_model.dart';
 import 'package:tasky_todo_app/features/auth/data/repos/auth_repo.dart';
 
-class AuthRepoImpl implements AuthRepo{
-   final ApiServices _apiService;
+class AuthRepoImpl implements AuthRepo {
+  final ApiServices _apiService;
 
   AuthRepoImpl(this._apiService);
   @override
- Future<Either<Failures, void>> register(Register model) async {
+  Future<Either<Failures, void>> register(Register model) async {
     try {
       await _apiService.request(
         method: 'POST',
@@ -34,8 +34,7 @@ class AuthRepoImpl implements AuthRepo{
 
   // Login User
   @override
-  Future<Either<Failures, Authinfo>> login(
-      Register model) async {
+  Future<Either<Failures, Authinfo>> login(Register model) async {
     try {
       var response = await _apiService.request(
         method: 'POST',

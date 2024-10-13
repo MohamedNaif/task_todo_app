@@ -28,7 +28,6 @@ final class LoginError extends AuthCubitState {
 
 final class LoginSuccess extends AuthCubitState {}
 
-
 /////////////////////////////////////////////
 
 final class LogoutSuccess extends AuthCubitState {}

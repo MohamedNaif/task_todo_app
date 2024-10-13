@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tasky_todo_app/core/di/dependency_injection.dart';
-import 'package:tasky_todo_app/features/profile/data/repos/profile_repo.dart';
+
 import 'package:tasky_todo_app/features/profile/data/repos/profile_repo_impl.dart';
 import 'package:tasky_todo_app/features/profile/presentation/view_model/cubit/profile_cubit_cubit.dart';
 import 'package:tasky_todo_app/features/profile/presentation/views/widgets/profile_view_body.dart';

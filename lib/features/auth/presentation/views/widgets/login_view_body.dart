@@ -47,6 +47,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
           EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: Form(
         key: _formKey,
+        autovalidateMode: autoValidateMode,
         child: Column(
           children: [
             SizedBox(
@@ -63,6 +64,12 @@ class _LoginViewBodyState extends State<LoginViewBody> {
             const SizedBox(height: 30),
             CustomTextFormField(
               obscureText: false,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter your password';
+                }
+                return null;
+              },
               hintText: '123 456-7890',
               prefixIcon: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -82,6 +89,12 @@ class _LoginViewBodyState extends State<LoginViewBody> {
             const SizedBox(height: 30),
             CustomTextFormField(
               obscureText: _obscureText,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter your password';
+                }
+                return null;
+              },
               hintText: 'Password',
               maxLines: 1,
               suffixIcon: IconButton(
@@ -105,7 +118,6 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                   showSnackBar(context,
                       message: state.errMessage, color: Colors.red);
                 }
-                
               },
               builder: (context, state) {
                 return CustomButton(
@@ -126,7 +138,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                       setState(() {});
                     }
                   },
-                  text:state is LoginLoading ? 'Loading...' : 'Sign In',
+                  text: state is LoginLoading ? 'Loading...' : 'Sign In',
                 );
               },
             ),

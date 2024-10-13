@@ -1,5 +1,3 @@
-
-
 import 'package:dartz/dartz.dart';
 import 'package:tasky_todo_app/core/errors/app_errors.dart';
 import 'package:tasky_todo_app/features/auth/data/models/auth_info.dart';

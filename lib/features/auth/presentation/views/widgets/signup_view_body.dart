@@ -4,7 +4,6 @@ import 'package:tasky_todo_app/core/function/show_snack_bar.dart';
 import 'package:tasky_todo_app/core/helper/assets.dart';
 import 'package:tasky_todo_app/core/helper/constant.dart';
 import 'package:tasky_todo_app/core/theming/app_style.dart';
-
 import 'package:tasky_todo_app/core/widgets/custom_button.dart';
 import 'package:tasky_todo_app/features/auth/data/models/register_model.dart';
 import 'package:tasky_todo_app/features/auth/presentation/view_model/auth_cubit/auth_cubit_cubit.dart';
@@ -27,6 +26,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
   num? experienceYears;
 
   List<String> experienceLevels = ['Junior', 'Senior', 'Team Leader'];
+
   void _toggleVisibility() {
     setState(() {
       _obscureText = !_obscureText;
@@ -35,10 +35,8 @@ class _SignupViewBodyState extends State<SignupViewBody> {
 
   String generateCountryFlag() {
     String countryCode = 'eg';
-
     String flag = countryCode.toUpperCase().replaceAllMapped(RegExp(r'[A-Z]'),
         (match) => String.fromCharCode(match.group(0)!.codeUnitAt(0) + 127397));
-
     return flag;
   }
 
@@ -49,6 +47,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
           EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: Form(
         key: _formKey,
+        autovalidateMode: autoValidateMode,
         child: Column(
           children: [
             SizedBox(
@@ -69,6 +68,12 @@ class _SignupViewBodyState extends State<SignupViewBody> {
               onSaved: (value) {
                 name = value;
               },
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter your name';
+                }
+                return null;
+              },
             ),
             const SizedBox(height: 20),
             CustomTextFormField(
@@ -76,6 +81,12 @@ class _SignupViewBodyState extends State<SignupViewBody> {
               hintText: '123 456-7890',
               onSaved: (value) {
                 phone = value;
+              },
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter your phone number';
+                }
+                return null;
               },
               prefixIcon: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -96,6 +107,12 @@ class _SignupViewBodyState extends State<SignupViewBody> {
               onSaved: (value) {
                 experienceYears = num.parse(value!);
               },
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter your years of experience';
+                }
+                return null;
+              },
             ),
             const SizedBox(height: 20),
             crateDropdownButton(context, experienceLevels),
@@ -106,6 +123,12 @@ class _SignupViewBodyState extends State<SignupViewBody> {
               onSaved: (value) {
                 address = value;
               },
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter your address';
+                }
+                return null;
+              },
             ),
             const SizedBox(height: 20),
             CustomTextFormField(
@@ -113,6 +136,12 @@ class _SignupViewBodyState extends State<SignupViewBody> {
               hintText: 'Password',
               onSaved: (value) {
                 password = value;
+              },
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter your password';
+                }
+                return null;
               },
               maxLines: 1,
               suffixIcon: IconButton(
@@ -130,19 +159,17 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                     content: Text(state.errMessage),
                     backgroundColor: Colors.red,
                   ));
-                }
-               else if (state is RegisterSuccess) {
+                } else if (state is RegisterSuccess) {
                   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                     content: Text('Account created successfully'),
                     backgroundColor: Colors.green,
                   ));
                   Navigator.pop(context);
                 }
-                // TODO: implement listener
               },
               builder: (context, state) {
                 return CustomButton(
-                  onTap: ()async {
+                  onTap: () async {
                     if (_formKey.currentState!.validate()) {
                       _formKey.currentState!.save();
                       var model = Register(
@@ -163,7 +190,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                       setState(() {});
                     }
                   },
-                  text:state is RegisterLoading ? 'Loading....' : 'Sign Up',
+                  text: state is RegisterLoading ? 'Loading....' : 'Sign Up',
                 );
               },
             ),
@@ -182,7 +209,8 @@ class _SignupViewBodyState extends State<SignupViewBody> {
     );
   }
 
-  SizedBox crateDropdownButton(BuildContext context, List<String> experienceLevels) {
+  SizedBox crateDropdownButton(
+      BuildContext context, List<String> experienceLevels) {
     return SizedBox(
       height: MediaQuery.sizeOf(context).height * 0.07,
       width: MediaQuery.sizeOf(context).width * 0.8,
@@ -205,6 +233,12 @@ class _SignupViewBodyState extends State<SignupViewBody> {
             selectedExperienceLevel = newValue;
             experienceLevel = newValue;
           });
+        },
+        validator: (value) {
+          if (value == null) {
+            return 'Please select your experience level';
+          }
+          return null;
         },
       ),
     );

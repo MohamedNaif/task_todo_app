@@ -11,9 +11,8 @@ part 'auth_cubit_state.dart';
 class AuthCubitCubit extends Cubit<AuthCubitState> {
   AuthCubitCubit(this._authRepo) : super(AuthCubitInitial());
 
-
   final AuthRepo _authRepo;
-  Authinfo? authinfo; 
+  Authinfo? authinfo;
 
   Future<void> register(Register model) async {
     emit(RegisterLoading());
@@ -31,7 +30,7 @@ class AuthCubitCubit extends Cubit<AuthCubitState> {
     result.fold((error) {
       emit(LoginError(error.errMessage));
     }, (success) {
-      emit(LoginSuccess( ));
+      emit(LoginSuccess());
       authinfo = success;
     });
   }
