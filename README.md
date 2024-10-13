@@ -64,6 +64,8 @@ Here are screenshots of the ToDo app's screens:
 <img src="https://github.com/user-attachments/assets/8fe7f32e-d598-44c8-8a4c-8ff48e1c1356" alt="Register View" width="300"/>
 <img src="https://github.com/user-attachments/assets/edcbd65a-5fde-4678-98c8-e2cfff256388" alt="Additional Login" width="300"/>
 <img src="https://github.com/user-attachments/assets/13fe4498-2dfb-4c8f-b852-5fc19a0a96ae" alt="Additional Register" width="300"/>
+<img src="https://github.com/user-attachments/assets/c83c642a-5303-43ca-9d7f-807bca0a060c" alt="Additional Register" width="300"/>
+<img src="https://github.com/user-attachments/assets/cea7b62b-dc3d-43ad-ac22-b2c2c557ec5b" alt="Additional Register" width="300"/>
 
 
 
@@ -74,12 +76,17 @@ Here are screenshots of the ToDo app's screens:
 <img src="https://github.com/user-attachments/assets/7181a110-69a2-466d-b915-fb8c85ce41ca" alt="Home View 3" width="300"/>
 <img src="https://github.com/user-attachments/assets/f706b77c-3076-4afd-b9c8-c7827e23b521" alt="Home View 4" width="300"/>
 <img src="https://github.com/user-attachments/assets/fbc7957a-083a-4d96-8ef2-5097b20278ef" alt="Home View 5" width="300"/>
+<img src="https://github.com/user-attachments/assets/ec8beba0-ffe0-43c2-bf7a-a287e25cec46" alt="Home View 5" width="300"/>
+
 
 5. Profile View
 <img src="https://github.com/user-attachments/assets/dff606de-0cd0-4400-a040-70db2f13949f" alt="Profile View" width="300"/>
 
-5. QR Code Screen
-<!-- Replace with your QR code screen screenshot link -->
+6. Task Detailes View
 
-6. Error State Screen
-<!-- Replace with your error state screenshot link -->
+<img src="https://github.com/user-attachments/assets/83472e1f-ff74-4446-a716-381ac24a7990" alt="Home View 5" width="300"/>
+<img src="https://github.com/user-attachments/assets/610555e8-937f-41fa-aa51-6597c95b43a3" alt="Home View 5" width="300"/>
+<img src="https://github.com/user-attachments/assets/e74c3ce1-ff0f-4897-8018-7a96c48e2e0e" alt="Home View 5" width="300"/>
+
+ 
+
